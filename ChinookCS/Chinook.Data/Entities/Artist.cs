@@ -18,5 +18,8 @@ namespace Chinook.Data.Entities
         [Required(ErrorMessage = "Name is required.")]
         [StringLength(120,ErrorMessage ="Name is limited to 120 characters")]
         public string Name { get; set; }
+
+        //navigation properties
+        public virtual ICollection<Album> Albums { get; set; }
     }
 }
