@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> </title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -45,14 +45,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">Classroom Demo</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                   <%-- <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
+                    </ul>--%>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -69,6 +69,28 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
+                    <asp:Menu ID="navMenu" runat="server"
+                         BackColor="#222222" BorderColor="Red"
+                         StaticMenuItemStyle-ForeColor="#999999"
+                         StaticMenuItemStyle-Font-Size="Larger"
+                         StaticMenuItemStyle-VerticalPadding="14px"
+                         StaticMenuItemStyle-HorizontalPadding="10px"
+                         RenderingMode="List" Orientation="Horizontal"
+                         DynamicMenuItemStyle-ForeColor="#999999"
+                         DynamicMenuItemStyle-Font-Size="Larger"
+                         DynamicMenuStyle-BackColor="Black">
+                        <Items>
+                            <asp:MenuItem Text="Home" NavigateUrl="~/"></asp:MenuItem>
+
+                            <asp:MenuItem Text="ODS">
+                                <asp:MenuItem Text="ODS Query" NavigateUrl="~/SamplePages/ODSQuery.aspx">
+                                </asp:MenuItem>
+                            </asp:MenuItem>
+
+                            <asp:MenuItem Text="Contact" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="About" NavigateUrl="~/About.aspx"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
                 </div>
             </div>
         </div>
