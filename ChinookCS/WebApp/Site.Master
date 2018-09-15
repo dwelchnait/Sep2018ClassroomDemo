@@ -83,7 +83,9 @@
                             <asp:MenuItem Text="Home" NavigateUrl="~/"></asp:MenuItem>
 
                             <asp:MenuItem Text="ODS">
-                                <asp:MenuItem Text="ODS Query" NavigateUrl="~/SamplePages/ODSQuery.aspx">
+                                <asp:MenuItem Text="ODS Query Gridview" NavigateUrl="~/SamplePages/ODSQuery.aspx">
+                                </asp:MenuItem>
+                                 <asp:MenuItem Text="ODS Query ListView" NavigateUrl="~/SamplePages/QueryListView.aspx">
                                 </asp:MenuItem>
                             </asp:MenuItem>
 
