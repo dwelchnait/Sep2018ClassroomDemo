@@ -13,5 +13,10 @@ namespace WebApp.SamplePages
         {
 
         }
+
+        protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
     }
 }
