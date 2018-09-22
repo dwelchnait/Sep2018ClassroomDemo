@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AlbumDetails.aspx.cs" Inherits="WebApp.SamplePages.AlbumDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Passing Data</h3>
+    <h3>Accessing Data from ListView and GridView</h3>
     <asp:Label ID="Label1" runat="server" 
         Text="Select Album: "></asp:Label>
     &nbsp;&nbsp;
@@ -139,7 +139,71 @@
         <asp:Label ID="Label2" runat="server" Text="You picked track id: "></asp:Label>&nbsp;&nbsp;
         <asp:Label ID="Label5" runat="server" Text="Command Arg: "></asp:Label>&nbsp;&nbsp;
         <asp:Label ID="CommandArgID" runat="server" ></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="Label6" runat="server" Text="Column : "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="Label6" runat="server" Text="Track ID : "></asp:Label>&nbsp;&nbsp;
         <asp:Label ID="ColumnID" runat="server" ></asp:Label>
+    </div>
+    <div class="row">
+        <asp:GridView ID="TrackOfAlbums" runat="server"
+            DataSourceID="AlbumTrackODS" AutoGenerateColumns="False" 
+            AllowPaging="True" OnSelectedIndexChanged="TrackOfAlbums_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="ID">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("TrackId") %>' runat="server" ID="TrackIdLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Name">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Media">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("MediaTypeId") %>' runat="server" ID="MediaTypeIdLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Genre">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("GenreId") %>' runat="server" ID="GenreIdLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Composer">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("Composer") %>' runat="server" ID="ComposerLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Size">
+                    <ItemTemplate>
+                    <asp:Label Text='<%# Eval("Bytes") %>' runat="server" ID="BytesLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Time (msec)">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("Milliseconds") %>' runat="server" ID="MillisecondsLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Price">
+                    <ItemTemplate>
+                        <asp:Label Text='<%# Eval("UnitPrice") %>' runat="server" ID="UnitPriceLabel" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:CommandField SelectText="View" ShowSelectButton="True" ButtonType="Button"></asp:CommandField>
+            </Columns>
+        </asp:GridView>
+        <div class="row">
+        <asp:Label ID="Label8" runat="server" Text="Total time and size"></asp:Label>&nbsp;&nbsp;
+        <asp:LinkButton ID="Sum" runat="server" OnClick="Sum_Click" >Totals</asp:LinkButton>&nbsp;&nbsp;
+        <asp:Label ID="Label9" runat="server" Text="Time: "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="SumTime" runat="server" ></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="Label11" runat="server" Text="Size: "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="SumSize" runat="server" ></asp:Label>
+    </div>
+     <div class="row">
+        <asp:Label ID="Label13" runat="server" Text="You picked track id: "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="Label14" runat="server" Text="Gridview Index: "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="GridViewIndex" runat="server" ></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="Label16" runat="server" Text="Track ID: "></asp:Label>&nbsp;&nbsp;
+        <asp:Label ID="SumTrackId" runat="server" ></asp:Label>
+    </div>
     </div>
 </asp:Content>

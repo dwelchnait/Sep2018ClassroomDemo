@@ -47,5 +47,28 @@ namespace WebApp.SamplePages
         {
 
         }
+
+        protected void TrackOfAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow agvrow = TrackOfAlbums.Rows[TrackOfAlbums.SelectedIndex];
+            GridViewIndex.Text = TrackOfAlbums.SelectedIndex.ToString();
+            SumTrackId.Text = (agvrow.FindControl("TrackIdLabel") as Label).Text;
+        }
+
+        protected void Sum_Click(object sender, EventArgs e)
+        {
+            double time = 0;
+            double size = 0;
+
+            //use foreach to cycle through the listview
+            foreach (GridViewRow item in this.TrackOfAlbums.Rows)
+            {
+                time += double.Parse((item.FindControl("MillisecondsLabel") as Label).Text);
+                size += double.Parse((item.FindControl("BytesLabel") as Label).Text);
+            }
+
+            SumTime.Text = time.ToString();
+            SumSize.Text = size.ToString();
+        }
     }
 }
