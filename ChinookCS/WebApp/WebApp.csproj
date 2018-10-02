@@ -225,6 +225,7 @@
     <Content Include="SamplePages\ODSCRUD.aspx" />
     <Content Include="SamplePages\ODSQuery.aspx" />
     <Content Include="SamplePages\QueryListView.aspx" />
+    <Content Include="SamplePages\SimpleRepeater.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="SamplePages\QueryListView.aspx.designer.cs">
       <DependentUpon>QueryListView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SamplePages\SimpleRepeater.aspx.cs">
+      <DependentUpon>SimpleRepeater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SamplePages\SimpleRepeater.aspx.designer.cs">
+      <DependentUpon>SimpleRepeater.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
