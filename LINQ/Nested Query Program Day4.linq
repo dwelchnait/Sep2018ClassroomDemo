@@ -27,7 +27,26 @@ void Main()
 								           (y.Milliseconds%60000)/1000
 							}).ToList()
 				};
-	results.Dump();
+	//results.Dump();
+	
+	//create a list of employees and the client they support
+	var employeelist = from x in Employees
+						where x.Title.Contains("Support")
+						orderby x.LastName, x.FirstName
+						select new SupportEmployee
+						{
+							Name = x.LastName + ", " + x.FirstName,
+							ClientCount = x.SupportRepIdCustomers.Count(),
+							ClientList = (from y in x.SupportRepIdCustomers
+										 orderby y.LastName, y.FirstName
+										 select new PlayListCustomer
+										{
+											lastname = y.LastName,
+											firstname = y.FirstName,
+											phone = y.Phone
+										}).ToList()
+						};
+	employeelist.Dump();
 }
 
 // Define other methods and classes here
@@ -36,6 +55,13 @@ public class Song
 {
  	public string songname{get;set;}
  	public string length{get;set;}
+}
+
+public class PlayListCustomer
+{
+	public string lastname {get;set;}
+	public string firstname {get;set;}
+	public string phone {get;set;}
 }
 //AnAlbum is the DTO. It has structure (a set of data on each instance
 //   of the class.
@@ -46,9 +72,9 @@ public class AnAlbum
 	public List<Song> songs{get;set;}
 }
 
-
-
-
-
-
-
+public class SupportEmployee
+{
+	public string Name{get;set;}
+	public int ClientCount{get;set;}
+	public List<PlayListCustomer> ClientList{get;set;}
+}

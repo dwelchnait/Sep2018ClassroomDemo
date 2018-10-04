@@ -91,6 +91,10 @@
                                 </asp:MenuItem>
                                   <asp:MenuItem Text="ListView Data Access" NavigateUrl="~/SamplePages/AlbumDetails.aspx">
                                 </asp:MenuItem>
+                                 <asp:MenuItem Text="Simple Repeater" NavigateUrl="~/SamplePages/SimpleRepeater.aspx">
+                                </asp:MenuItem>
+                                 <asp:MenuItem Text="Nested Repeater" NavigateUrl="~/SamplePages/NestedRepeater.aspx">
+                                </asp:MenuItem>
                             </asp:MenuItem>
 
                             <asp:MenuItem Text="Contact" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
