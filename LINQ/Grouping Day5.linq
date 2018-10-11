@@ -55,14 +55,39 @@ select new
 			genre = gTemp.Key.Name,
 			numberof = gTemp.Count()
 		}
+		
+//create a list of employees showing the customers
+//that each employee supports
+//What is the datapiletogroup? Customers
+//What is the grouping attribute criteria? by Employee
+from x in Customers
+group x by x.SupportRepIdEmployee into gEmployeeCustomerList
+select new
+		{
+			FirstName = gEmployeeCustomerList.Key.FirstName,
+			LastName = gEmployeeCustomerList.Key.LastName,
+			Phone = gEmployeeCustomerList.Key.Phone,
+			Email = gEmployeeCustomerList.Key.Email,
+			NumberOfCustomers = gEmployeeCustomerList.Count(),
+			CustomerList = from y in gEmployeeCustomerList
+							select new
+			{
+				Name = y.LastName + ", " + y.FirstName,
+				Phone = y.Phone,
+				Email = y.Email
+			}
+			
+		}
 
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
