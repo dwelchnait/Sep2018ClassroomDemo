@@ -14,6 +14,7 @@ namespace WebApp.SamplePages
 
         }
 
+        //in code behind to be called from ODS
         protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
         {
             MessageUserControl.HandleDataBoundException(e);
