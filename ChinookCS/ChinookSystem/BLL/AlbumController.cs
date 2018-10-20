@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Chinook.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel;  //ODS
+using Chinook.Data.DTOs;
+using Chinook.Data.POCOs;
 #endregion
 
 namespace ChinookSystem.BLL
@@ -87,6 +89,46 @@ namespace ChinookSystem.BLL
                 return context.SaveChanges();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<AnAlbum> Album_GetAlbumAndSongs()
+        {
+            using (var context = new ChinookContext())
+            {
+                var results = from x in context.Albums
+                              where x.Tracks.Count() > 24
+                              select new AnAlbum
+                              {
+                                  artist = x.Artist.Name,
+                                  title = x.Title,
+                                  songs = (from y in x.Tracks
+                                           select new Song
+                                           {
+                                               songname = y.Name,
+                                               length = y.Milliseconds / 60000 + ":" +
+                                                          (y.Milliseconds % 60000) / 1000
+                                           }).ToList()
+                              };
+                return results.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<SelectionList>List_AlbumTitles()
+        {
+            using (var context = new ChinookContext())
+            {
+                var results = from x in context.Albums
+                              orderby x.Title
+                              select new SelectionList
+                              {
+                                  IDValueField = x.AlbumId,
+                                  DisplayText = x.Title
+                              };
+                return results.ToList();
+            }
+        }
     }
 }
+
 
