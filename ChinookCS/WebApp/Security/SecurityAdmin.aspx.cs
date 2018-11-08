@@ -15,16 +15,19 @@ namespace WebApp.Security
             {
                 if (User.IsInRole("Administrators"))
                 {
-
+                    MessageUserControl.ShowInfo("Success", "You may continue");
                 }
                 else
                 {
-                    //redirect ot a page that states no authorization fot the request action
+                    //redirect ot a page that states no authorization for the requested action
+                    Response.Redirect("~/Default.aspx");
+
                 }
             }
             else
             {
                 //redieect to login page
+                Response.Redirect("~/Account/Login.aspx");
             }
         }
         protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)

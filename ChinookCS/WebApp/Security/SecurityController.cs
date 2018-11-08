@@ -54,7 +54,8 @@ namespace WebApp.Security
                 user.EmployeeId = null;
             }
 
-            IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
+            IdentityResult result = 
+                UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
             CheckResult(result,"user", "add");
         }
 
@@ -64,7 +65,8 @@ namespace WebApp.Security
             var existing = UserManager.FindById(user.Id);
             if (existing == null)
                 throw new Exception("The specified user was not found");
-            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] && existing.UserName != user.UserName)
+            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] && 
+                        existing.UserName != user.UserName)
                 throw new Exception("You are not allowed to modify the website administrator's user name");
             // Change certain parts of the found user
             if (user.EmployeeId == 0)
