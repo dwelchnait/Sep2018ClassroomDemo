@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 #region Additonal Namespaces
 using ChinookSystem.BLL;
 using Chinook.Data.POCOs;
+using WebApp.Security;
 #endregion
 
 namespace Jan2018DemoWebsite.SamplePages
@@ -22,7 +23,9 @@ namespace Jan2018DemoWebsite.SamplePages
                 if (User.IsInRole("Administrators") ||
                     User.IsInRole("Customers"))
                 {
-                    MessageUserControl.ShowInfo("Success", "You may continue");
+                    SecurityController sysmgr = new SecurityController();
+                    int? customerid = sysmgr.GetCurrentUserCustomerId(User.Identity.Name);
+                  
                 }
                 else
                 {

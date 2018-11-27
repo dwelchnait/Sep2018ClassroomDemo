@@ -188,5 +188,36 @@ namespace WebApp.Security
             CheckResult(UserManager.RemoveFromRole(existinguser.Id, RoleManager.FindById(roleid).Name),"user role", "remove");
         }
         #endregion
+
+        #region Employee/Customer IDs
+        public int? GetCurrentUserEmployeeId(string userName)
+        {
+            int? id = null;
+            var request = HttpContext.Current.Request;
+            if (request.IsAuthenticated)
+            {
+                var manager = request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var appUser = manager.Users.SingleOrDefault(x => x.UserName == userName);
+                if (appUser != null)
+                    id = appUser.EmployeeId;
+            }
+            return id;
+        }
+
+        public int? GetCurrentUserCustomerId(string userName)
+        {
+            int? id = null;
+            var request = HttpContext.Current.Request;
+            if (request.IsAuthenticated)
+            {
+                var manager = request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var appUser = manager.Users.SingleOrDefault(x => x.UserName == userName);
+                if (appUser != null)
+                    id = appUser.CustomerId;
+            }
+            return id;
+        }
+        #endregion
+
     }
 }
