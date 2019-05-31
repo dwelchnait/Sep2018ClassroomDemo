@@ -51,8 +51,7 @@ namespace Jan2018DemoWebsite.SamplePages
             MessageUserControl.TryRun(() =>
             {
                 //code to go here
-                int id = int.Parse(ArtistDDL.SelectedValue);
-                SearchArgID.Text = id.ToString();
+                SearchArg.Text = ArtistName.Text;
                 TracksBy.Text = "Artist";
                 TracksSelectionList.DataBind(); //causes the ODS to execute
             },"Track Search","Please select from the following list to add to your playlist.");
@@ -67,7 +66,7 @@ namespace Jan2018DemoWebsite.SamplePages
             {
                 //code to go here
                 int id = int.Parse(MediaTypeDDL.SelectedValue);
-                SearchArgID.Text = id.ToString();
+                SearchArg.Text = id.ToString();
                 TracksBy.Text = "MediaType";
                 TracksSelectionList.DataBind(); //causes the ODS to execute
             }, "Track Search", "Please select from the following list to add to your playlist.");
@@ -79,7 +78,7 @@ namespace Jan2018DemoWebsite.SamplePages
             {
                 //code to go here
                 int id = int.Parse(GenreDDL.SelectedValue);
-                SearchArgID.Text = id.ToString();
+                SearchArg.Text = id.ToString();
                 TracksBy.Text = "Genre";
                 TracksSelectionList.DataBind(); //causes the ODS to execute
             }, "Track Search", "Please select from the following list to add to your playlist.");
@@ -90,8 +89,8 @@ namespace Jan2018DemoWebsite.SamplePages
             MessageUserControl.TryRun(() =>
             {
                 //code to go here
-                int id = int.Parse(AlbumDDL.SelectedValue);
-                SearchArgID.Text = id.ToString();
+                
+                SearchArg.Text = AlbumTitle.Text;
                 TracksBy.Text = "Album";
                 TracksSelectionList.DataBind(); //causes the ODS to execute
             }, "Track Search", "Please select from the following list to add to your playlist.");

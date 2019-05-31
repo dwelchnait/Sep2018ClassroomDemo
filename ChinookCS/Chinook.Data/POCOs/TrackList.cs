@@ -11,6 +11,7 @@ namespace Chinook.Data.POCOs
         public int TrackID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
+        public string ArtistName { get; set; }
         public string MediaName { get; set; }
         public string GenreName { get; set; }
         public string Composer { get; set; }

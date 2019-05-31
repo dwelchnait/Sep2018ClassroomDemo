@@ -31,13 +31,13 @@ namespace Jan2018DemoWebsite.SamplePages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ArtistDDL control.
+        /// ArtistName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ArtistDDL;
+        protected global::System.Web.UI.WebControls.TextBox ArtistName;
         
         /// <summary>
         /// ArtistFetch control.
@@ -112,13 +112,13 @@ namespace Jan2018DemoWebsite.SamplePages {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// AlbumDDL control.
+        /// AlbumTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AlbumDDL;
+        protected global::System.Web.UI.WebControls.TextBox AlbumTitle;
         
         /// <summary>
         /// AlbumFetch control.
@@ -148,13 +148,13 @@ namespace Jan2018DemoWebsite.SamplePages {
         protected global::System.Web.UI.WebControls.Label TracksBy;
         
         /// <summary>
-        /// SearchArgID control.
+        /// SearchArg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SearchArgID;
+        protected global::System.Web.UI.WebControls.Label SearchArg;
         
         /// <summary>
         /// TracksSelectionList control.
@@ -227,24 +227,6 @@ namespace Jan2018DemoWebsite.SamplePages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView PlayList;
-        
-        /// <summary>
-        /// ArtistDLLODS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ArtistDLLODS;
-        
-        /// <summary>
-        /// AlbumDDLODS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource AlbumDDLODS;
         
         /// <summary>
         /// MediaTypeDDLODS control.

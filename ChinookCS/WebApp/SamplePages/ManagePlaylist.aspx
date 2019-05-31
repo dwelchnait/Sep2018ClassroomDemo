@@ -4,17 +4,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <div>
-    <h1>Manage Playlists (UX TRX Sample)</h1>
+    <h1>Manage Playlists (UI/UX TRX Sample)</h1>
 </div>
     <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
     <div class="row">
     <div class="col-sm-2">
         <asp:Label ID="Label1" runat="server" Text="Artist" ></asp:Label><br />
-        <asp:DropDownList ID="ArtistDDL" runat="server"
-            Width="150px" DataSourceID="ArtistDLLODS" 
-            DataTextField="DisplayText" 
-            DataValueField="IDValueField">
-        </asp:DropDownList><br />
+        <asp:TextBox ID="ArtistName" runat="server"
+            Width="150px" placeholder="artist name">
+        </asp:TextBox><br />
         <asp:Button ID="ArtistFetch" runat="server" Text="Fetch" OnClick="ArtistFetch_Click"
               />
         <br /><br />
@@ -37,11 +35,9 @@
             />
         <br /><br />
          <asp:Label ID="Label4" runat="server" Text="Album"></asp:Label><br />
-        <asp:DropDownList ID="AlbumDDL" runat="server"
-            Width="150px" DataSourceID="AlbumDDLODS" 
-            DataTextField="DisplayText" 
-            DataValueField="IDValueField">
-        </asp:DropDownList><br />
+        <asp:TextBox ID="AlbumTitle" runat="server"
+            Width="150px" placeholder="album title">
+        </asp:TextBox><br />
         <asp:Button ID="AlbumFetch" runat="server" Text="Fetch" OnClick="AlbumFetch_Click"
              />
         <br /><br />
@@ -49,7 +45,7 @@
     <div class="col-sm-10">
         <asp:Label ID="Label5" runat="server" Text="Tracks"></asp:Label>&nbsp;&nbsp;
         <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="SearchArgID" runat="server" ></asp:Label><br />
+        <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
         <asp:ListView ID="TracksSelectionList" runat="server"
             DataSourceID="TrackSelectionListODS"
             OnItemCommand="TracksSelectionList_ItemCommand"
@@ -66,6 +62,8 @@
                         <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" /></td>
                     <td>
                         <asp:Label Text='<%# Eval("Title") %>' runat="server" ID="TitleLabel" /></td>
+                    <td>
+                        <asp:Label Text='<%# Eval("ArtistName") %>' runat="server" ID="ArtistNameLabel" /></td>
                     <td>
                         <asp:Label Text='<%# Eval("MediaName") %>' runat="server" ID="MediaNameLabel" /></td>
                     <td>
@@ -103,6 +101,8 @@
                     <td>
                         <asp:Label Text='<%# Eval("Title") %>' runat="server" ID="TitleLabel" /></td>
                     <td>
+                        <asp:Label Text='<%# Eval("ArtistName") %>' runat="server" ID="ArtistNameLabel" /></td>
+                    <td>
                         <asp:Label Text='<%# Eval("MediaName") %>' runat="server" ID="MediaNameLabel" /></td>
                     <td>
                         <asp:Label Text='<%# Eval("GenreName") %>' runat="server" ID="GenreNameLabel" /></td>
@@ -125,6 +125,7 @@
                                     <th runat="server">TrackID</th>
                                     <th runat="server">Name</th>
                                     <th runat="server">Title</th>
+                                    <th runat="server">Artist</th>
                                     <th runat="server">Media</th>
                                     <th runat="server">Genre</th>
                                     <th runat="server">Composer</th>
@@ -220,7 +221,7 @@
     </div>
 
 </div>
-    <asp:ObjectDataSource ID="ArtistDLLODS" runat="server" 
+    <%--<asp:ObjectDataSource ID="ArtistDLLODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="List_ArtistNames" 
         TypeName="ChinookSystem.BLL.ArtistController"
@@ -232,7 +233,7 @@
         SelectMethod="List_AlbumTitles" 
         TypeName="ChinookSystem.BLL.AlbumController"
          OnSelected="CheckForException">
-    </asp:ObjectDataSource>
+    </asp:ObjectDataSource>--%>
 
     <asp:ObjectDataSource ID="MediaTypeDDLODS" runat="server" 
         OldValuesParameterFormatString="original_{0}" 
@@ -253,11 +254,11 @@
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="List_TracksForPlaylistSelection" 
         TypeName="ChinookSystem.BLL.TrackController"
-         
+         OnSelected="CheckForException"
          >
         <SelectParameters>
             <asp:ControlParameter ControlID="TracksBy" PropertyName="Text" Name="tracksby" Type="String"></asp:ControlParameter>
-            <asp:ControlParameter ControlID="SearchArgID" PropertyName="Text" Name="argid" Type="Int32"></asp:ControlParameter>
+            <asp:ControlParameter ControlID="SearchArg" PropertyName="Text" Name="arg" Type="String"></asp:ControlParameter>
         </SelectParameters>
     </asp:ObjectDataSource>
 
